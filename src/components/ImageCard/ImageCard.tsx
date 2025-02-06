@@ -1,7 +1,14 @@
-import PropTypes from "prop-types";
+import { Photo } from "../../service/types";
 import style from "./ImageCard.module.css";
 
-const ImageCard = ({ imageLink, descr, onImageClick, imageData }) => {
+type Props = {
+  imageLink: string;
+  descr: string;
+  imageData: Photo;
+  onImageClick: (image: Photo) => void;
+};
+
+const ImageCard = ({ imageLink, descr, onImageClick, imageData }: Props) => {
   const handleClick = () => {
     onImageClick(imageData);
   };
@@ -16,14 +23,6 @@ const ImageCard = ({ imageLink, descr, onImageClick, imageData }) => {
       />
     </div>
   );
-};
-
-ImageCard.propTypes = {
-  imageLink: PropTypes.string.isRequired,
-  descr: PropTypes.string,
-  onImageClick: PropTypes.func,
-  imageLinkModal: PropTypes.string.isRequired,
-  imageData: PropTypes.object.isRequired,
 };
 
 export default ImageCard;

@@ -14,6 +14,7 @@ export interface Photo {
   likes: number;
   liked_by_user: boolean;
   description: string;
+  alt_description: string;
   user: User;
   current_user_collections: unknown[];
   links: PhotoLinks;

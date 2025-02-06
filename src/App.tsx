@@ -22,7 +22,9 @@ function App() {
   const [isError, setIsError] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [noResults, setNoResults] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
+  const [selectedImage, setSelectedImage] = useState<Photo | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -75,7 +77,7 @@ function App() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedImage(null);
+    setSelectedImage(undefined);
   };
 
   return (

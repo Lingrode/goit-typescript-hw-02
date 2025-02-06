@@ -1,8 +1,13 @@
-import PropTypes from "prop-types";
-import style from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
+import { Photo } from "../../service/types";
+import style from "./ImageGallery.module.css";
 
-const ImageGallery = ({ photos, onImageClick }) => {
+type Props = {
+  photos: Photo[];
+  onImageClick: (image: Photo) => void;
+};
+
+const ImageGallery = ({ photos, onImageClick }: Props) => {
   return (
     <ul className={style.gallery}>
       {photos.map((photo) => {
@@ -11,7 +16,6 @@ const ImageGallery = ({ photos, onImageClick }) => {
           <li key={id} className={style.galleryItem}>
             <ImageCard
               imageLink={urls.small}
-              imageLinkModal={urls.regular}
               descr={alt_description}
               onImageClick={onImageClick}
               imageData={photo}
@@ -21,11 +25,6 @@ const ImageGallery = ({ photos, onImageClick }) => {
       })}
     </ul>
   );
-};
-
-ImageGallery.propTypes = {
-  photos: PropTypes.array,
-  onImageClick: PropTypes.func,
 };
 
 export default ImageGallery;

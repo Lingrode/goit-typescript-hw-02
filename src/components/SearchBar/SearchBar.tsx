@@ -1,12 +1,16 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { ChangeEvent, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 import toast, { Toaster } from "react-hot-toast";
+
 import style from "./SearchBar.module.css";
 
-const SearchBar = ({ onSubmit }) => {
-  const [value, setValue] = useState("");
-  const handleSubmit = (event) => {
+type Props = {
+  onSubmit: (value: string) => void;
+};
+
+const SearchBar = ({ onSubmit }: Props) => {
+  const [value, setValue] = useState<string>("");
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!value.trim()) {
@@ -40,10 +44,6 @@ const SearchBar = ({ onSubmit }) => {
       <Toaster containerClassName={style.toast} />
     </header>
   );
-};
-
-SearchBar.propTypes = {
-  onSubmit: PropTypes.func,
 };
 
 export default SearchBar;
