@@ -6,7 +6,7 @@ import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
-import { fetchPhotos } from "./gallery-api";
+import { fetchPhotos } from "./service/gallery-api";
 import style from "./App.module.css";
 
 function App() {
