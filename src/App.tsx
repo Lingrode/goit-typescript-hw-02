@@ -1,24 +1,28 @@
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
+
 import { fetchPhotos } from "./service/gallery-api";
+import { Photo } from "./service/types";
+
 import style from "./App.module.css";
 
 function App() {
-  const [photos, setPhotos] = useState([]);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [noResults, setNoResults] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [noResults, setNoResults] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -52,7 +56,7 @@ function App() {
     setPage((prev) => prev + 1);
   };
 
-  const handleQuery = (value) => {
+  const handleQuery = (value: string) => {
     if (value.trim() === query.trim()) {
       toast.error("Change query!", {
         position: "top-right",
@@ -64,7 +68,7 @@ function App() {
     setPhotos([]);
   };
 
-  const openModal = (imageData) => {
+  const openModal = (imageData: Photo) => {
     setSelectedImage(imageData);
     setIsModalOpen(true);
   };

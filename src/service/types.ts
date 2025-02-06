@@ -4,7 +4,7 @@ export interface ApiResponse {
   results: Photo[];
 }
 
-interface Photo {
+export interface Photo {
   id: string;
   created_at: string;
   width: number;
